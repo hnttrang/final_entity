@@ -1,47 +1,49 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToOne} from 'typeorm'
-import { Role } from './Role.entity';
+import { Gender } from 'src/interface/enum';
+import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn} from 'typeorm'
+import { RoleEntity } from './Role.entity';
 @Entity('User')
-export class User{
+export class UserEntity{
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column()
+    @Column({type: 'varchar', length: 255})
     name: string;
 
-    @Column({unique: true})
+    @Column({type: 'varchar', length: 320, unique: true})
     email: string;
 
-    @Column()
+    @Column({type: 'varchar', length: 255})
     username: string;
 
-    @Column()
+    @Column({type: 'varchar', length: 255})
     password: string;
 
-    @Column()
-    birthday: Date;
+    @Column({type: 'date'})
+    birthday: string;
 
-    @Column()
+    @Column({type: 'varchar', length: 11})
     numberPhone: string;
 
-    @Column()
-    gender: number;
+    @Column({type: 'enum', enum: Gender})
+    gender: Gender;
 
-    @Column()
+    @Column({type: 'varchar', length: 255})
     avatar: string;
 
-    @Column()
+    @Column({type: 'bit'})
     isSocial: boolean;
 
-    @Column()
+    @Column({type: 'bit', default: 0})
     isDeleted: boolean;
     
-    @Column()
-    createAt: Date;
+    @Column({type: 'date'})
+    createAt: string;
 
-    @Column()
-    updateAt: Date;
+    @Column({type: 'date'})
+    updateAt: string;
 
-    @OneToOne(() => Role, (role: Role) => role.id)
-    roleId: string;
+    @OneToOne(() => RoleEntity)
+    @JoinColumn()
+    roleId: RoleEntity;
 }
 

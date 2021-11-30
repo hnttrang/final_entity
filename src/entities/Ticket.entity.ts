@@ -1,22 +1,23 @@
+import { ticketStatus } from 'src/interface/enum';
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne} from 'typeorm'
-import { Event } from './Event.entity';
-import { Order } from './Order.entity';
+import { EventEntity } from './Event.entity';
+import { OrderEntity } from './Order.entity';
 @Entity('Ticket')
-export class Ticket{
+export class TicketEntity{
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @ManyToOne(() => Event, (event: Event) => event.id, {nullable: false})
-    eventId: Event;
+    @ManyToOne(() => EventEntity, (event: EventEntity) => event.id, {nullable: false})
+    eventId: EventEntity;
     //OrderID
-    @ManyToOne(() => Order, (order: Order) => order.id)
-    orderId: string;
-    @Column({default: 'ready'})
-    status: 'ready' | 'sold'
-    @Column({nullable: false})
+    @ManyToOne(() => OrderEntity, (order: OrderEntity) => order.id)
+    orderId: OrderEntity;
+    @Column({type: 'enum', enum: ticketStatus, default: ticketStatus.ready})
+    status: ticketStatus
+    @Column({ type: 'varchar', length: 510, nullable: false})
     nftToken: string;
-    @Column()
-    createdAt: Date;
-    @Column()
-    updatedAt: Date; 
+    @Column({type: 'date'})
+    createdAt: string;
+    @Column({type: 'date'})
+    updatedAt: string; 
 }

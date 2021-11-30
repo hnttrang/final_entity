@@ -1,14 +1,15 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne} from 'typeorm'
-import { User } from './User.entity';
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne, JoinColumn} from 'typeorm'
+import { UserEntity } from './User.entity';
 
 @Entity('Wallet')
-export class Wallet{
+export class WalletEntity{
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column()
     walletAddress: string;
 
-    @OneToOne(() => User, (user: User) => user.id)
-    userId: User;
+    @OneToOne(() => UserEntity)
+    @JoinColumn()
+    userId: UserEntity;
 }
