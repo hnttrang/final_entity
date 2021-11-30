@@ -1,9 +1,11 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne} from 'typeorm'
-@Entity('Permission')
-export class Permission{
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-    @Column()
-    name:string;
+
+@Entity('Permission')
+export class PermissionEntity {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column()
+  name: string;
 }
