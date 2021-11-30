@@ -1,7 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne} from 'typeorm'
 import { Event } from './Event.entity';
 import { Order } from './Order.entity';
-@Entity()
+@Entity('Ticket')
 export class Ticket{
     @PrimaryGeneratedColumn('uuid')
     id: string;
@@ -10,7 +10,7 @@ export class Ticket{
     eventId: Event;
     //OrderID
     @ManyToOne(() => Order, (order: Order) => order.id)
-    order: string;
+    orderId: string;
     @Column({default: 'ready'})
     status: 'ready' | 'sold'
     @Column({nullable: false})

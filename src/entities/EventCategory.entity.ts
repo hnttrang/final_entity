@@ -1,6 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne} from 'typeorm'
 
-@Entity()
+@Entity('EventCategory')
 export class EventCategory{
     @PrimaryGeneratedColumn('uuid')
     id: string;

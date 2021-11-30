@@ -1,7 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne} from 'typeorm'
 import { User } from './User.entity';
 
-@Entity()
+@Entity('Wallet')
 export class Wallet{
     @PrimaryGeneratedColumn('uuid')
     id: string;

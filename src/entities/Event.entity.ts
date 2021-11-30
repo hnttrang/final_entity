@@ -1,7 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne} from 'typeorm'
 import { User } from './User.entity';
 import { EventCategory } from './EventCategory.entity';
-@Entity()
+@Entity('Event')
 export class Event{
     @PrimaryGeneratedColumn('uuid')
     id: number;

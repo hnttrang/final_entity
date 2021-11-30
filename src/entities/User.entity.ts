@@ -1,5 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from 'typeorm'
-@Entity()
+import {Entity, PrimaryGeneratedColumn, Column, OneToOne} from 'typeorm'
+import { Role } from './Role.entity';
+@Entity('User')
 export class User{
     @PrimaryGeneratedColumn('uuid')
     id: string;
@@ -39,5 +40,8 @@ export class User{
 
     @Column()
     updateAt: Date;
+
+    @OneToOne(() => Role, (role: Role) => role.id)
+    roleId: string;
 }
 
