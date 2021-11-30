@@ -1,6 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne} from 'typeorm'
 import { User } from './User.entity';
 import { EventCategory } from './EventCategory.entity';
+import { eventStatus } from 'src/interface/enum';
 @Entity('Event')
 export class Event{
     @PrimaryGeneratedColumn('uuid')
@@ -67,7 +68,7 @@ export class Event{
     isDeleted: boolean;
 
     @Column()
-    status: string;
+    status: eventStatus;
 
     @Column()
     createdAt: Date;
